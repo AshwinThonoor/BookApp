@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="outlookBg/outlook.css">
+</head>
+<body>
+
+<ul>
+  <li><img   src="outlookBg/logo.jpg" alt="logo" height="80cm" width="92cm"></li>
+  <li><a  href="#home">Home</a></li>
+  <li><a href="#books_available">Available Books</a></li>
+  <li><a href="#contact">Contact</a></li>
+  
+    <div class="right">
+      <form id="form"> 
+    <input type="search" id="query" name="q" placeholder="Search...">
+    <button>Search</button>
+  </form>
+
+</div>
+</ul>
+
+  
+    
+    <div class="slideshow-container">
+      
+    <div class="mySlides fade">
+      
+      <img src="outlookBg/1.jpg" style="width:50% " class="center">
+      
+    </div>
+    
+    <div class="mySlides fade">
+     
+      <img src="outlookBg/2.jpg" style="width:45%" class="center">
+      
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+    
+    <script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 5000); // Change image every 2 seconds
+    }
+    </script>
+  
+<hr>
+<section id="books_available">
+  <h1 class="webTitle">
+          
+    -  Available Books -</h1>
+    <hr>
+  <div class="row">
+    <div class="column">
+      <img src="outlookBg/bird-box-1.jpg" style="width:50%">
+    </div>
+    <div class="column">
+      <img src="outlookBg/marvel.jpg" alt="Forest" style="width:50%">
+    </div>
+    <div class="column">
+      <img src="outlookBg/abdulkalam.jpg" alt="apj" style="width:50%">
+      <h1></h1>
+      <img src="outlookBg/java.jpg" alt="jv" style="width:50% ">
+    </div>
+    <div class="column">
+      <img src="outlookBg/fis.jpg" alt="fis" style="width:50%">
+    </div>
+    <div class="column">
+      <img src="outlookBg/hp.jpg" alt="hp" style="width:50%">
+    </div>
+  </div>
+  </section>
+  <section id="contact">
+  <footer  class="site-footer">
+    <div class="container">
+      <div class="row">
+          <hr>
+          <h4 style="text-align: center">Contact us</h4>
+          <p style="text-align: center">For any Queries Do Contact<br>--at@abc.com--<br>--bp@abc.com--<br>--sk@abc.com--<br>--sv@abc.com--<br>--uh@abc.com--</p>
+      </div>
+    </div>
+  </footer>
+  </section>
+
+</body>
+</html>
