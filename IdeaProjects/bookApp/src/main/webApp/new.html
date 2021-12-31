@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border=2px width="700px">
+
+    <tr>
+        <td><b>TrainNo</b></td>
+        <td><b>TrainName</b></td>
+        <td><b>SourcePlace</b></td>
+        <td><b>DestinationPlace</b></td>
+        <td><b>Fare</b></td>
+    </tr>
+    <tbody>
+    <tr th:each="train1: ${trainThy}">
+        <td th:text="${train1.trainNo}">TrainNo</td>
+        <td th:text="${train1.trainName}">TrainName</td>
+        <td th:text="${train1.sourcePlace}">SourcePlace</td>
+        <td th:text="${train1.destinationPlace}">DestinationPlace</td>
+        <td th:text="${train1.fare}">Fare</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

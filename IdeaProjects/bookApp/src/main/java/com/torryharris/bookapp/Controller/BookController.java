@@ -6,9 +6,11 @@ import com.torryharris.bookapp.Repository.BookRepo;
 import com.torryharris.bookapp.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class BookController {
@@ -16,7 +18,7 @@ public class BookController {
     UserRepo userRepo;
     @Autowired
     BookRepo bookRepo;
-    @RequestMapping("login")
+    @PostMapping("login")
     public String login(User user, HttpServletRequest request){
         String username=request.getParameter("username");
         String password=request.getParameter("password");
@@ -34,14 +36,14 @@ public class BookController {
             return "LoginPage.jsp";
         }
     }
-    @RequestMapping("Register")
+    @PostMapping("Register")
     public String addUser(User user){
         userRepo.save(user);
         return "LoginPage.jsp";
     }
 
     //CRUD operations
-    @RequestMapping("detailsPage")
+    @PostMapping("/detailsPage")
     public String add(Books books, HttpServletRequest request) {
         switch (request.getParameter("value")) {
             case "Add":
@@ -58,6 +60,11 @@ public class BookController {
                 break;
         }
         return "DetailsPage.jsp";
+    }
+    @RequestMapping("/filter")
+    public String filter(){
+        List<User> userList=
+        return "new.html";
     }
 
 }
