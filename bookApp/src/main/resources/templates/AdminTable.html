@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<h1><center>Table details</center></h1>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<div class="old_ie_wrapper">
+<form action="/filter">
+    <label for="filter">Filter By:</label>
+    <select name="filter" id="filter">
+        <option>Choose any one</option>
+        <option value="author">Author</option>
+        <option value="bookName">BookName</option>
+    </select>
+    <input type="text" name="word" placeholder="Enter a word">
+    <input type="submit" name="value" value="filter">
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>S.no</th>
+        <th>BookName</th>
+        <th>Author</th>
+        <th>Section</th>
+        <th>Price</th>
+        <th>Available Books</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="bookValues : ${ListBooks}">
+
+    <tr>
+        <td>[[${bookValues.sNo}]]</td>
+        <td>[[${bookValues.bookName}]]</td>
+        <td>[[${bookValues.author}]]</td>
+        <td>[[${bookValues.section}]]</td>
+        <td>[[${bookValues.price}]]</td>
+        <td>[[${bookValues.availableBooks}]]</td>
+        <td><input type="submit" name="value"  value="Modify" style="width: 100px";>
+        <input type="submit" name="value" value="Delete" style="width: 100px";></td>
+        <var></var>
+    </tr>
+    </th:block>
+    </tbody>
+</table>
+    <center><input type="submit" name="value" value="Add" style="width: 100px";></center>
+</form>
+</div>
+</html>

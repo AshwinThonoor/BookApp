@@ -1,0 +1,36 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+
+    <link rel="stylesheet"  href="loginRegistration/LoginPage.css">
+    <title>Login panel</title>
+    <style>
+        marquee{
+        font-size: 30px;
+        font-weight: 600;
+        color: ;
+        font-family_ sans-serif;
+        }
+    </style>
+    <marquee width="100%" direction="left" height="100px">
+       <h3>We here believe that bookstores are essential to a healthy culture</h3>
+    </marquee>
+
+   <div id="a"> <p><center><h2>As more and more people buy their books online</h2></center></p>
+    <p><center><h2>we wanted to create an easy, convinient way for you to get your books</h2></center></p></div>
+</head>
+<body>
+    <div class="form">
+        <form class="login-form" action="/login">
+            <input type="text" name="username" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <button type="submit">Login</button>
+            <p class="message">Not registered? <a th:href="@{'/registrationPage'}">Create an account</a></p>
+        </form>
+    </div>
+<script>
+    $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+</script>
+</body>
+</html>

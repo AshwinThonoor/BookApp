@@ -1,0 +1,104 @@
+<html>
+<head>
+    <link rel="stylesheet" href="bookPagesBg/books.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<h2 style="text-align:center">Product book</h2>
+
+<div class="book">
+    <img src="bookPagesBg/Harry%20Potter%20and%20the%20Deathly%20Hallows.jpg" alt="Harry Potter and the Deathly Hallows.jpg" style="width:70%">
+
+    <h1>
+        Harry Potter and the Deathly Hallows
+    </h1>
+
+    <h2>
+        Harry Potter and the Deathly Hallows is the seventh and final book in the Harry Potter series by J. K. Rowling
+
+    </h2>
+
+    <p class="price">
+        800 Rs/-
+    </p>
+
+    <table  style="-padding:px;">
+        <thead>
+        <th colspan="10"></th>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td colspan="8">
+                <button>
+                    Buy now
+                </button>
+            </td>
+
+            <td colspan="2">
+                <button>
+                    Add to cart
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button
+                        onclick="increment()">
+                    +
+                </button>
+            </td>
+
+            <td colspan="4">
+                            <span
+                                    id="demoInput">
+                                0
+                            </span>
+            </td>
+
+            <td colspan="2">
+                <button
+                        onclick="decrement()">
+                    -
+                </button>
+            </td>
+
+            <td
+                    colspan="2">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+                const minQuantity = 0;
+                const maxQuantity = 10;
+
+                function increment() {
+                    const currentValue = Number(document.getElementById('demoInput').innerText);
+                    const newValue = currentValue + 1;
+                    if (checkLimit(newValue)) {
+                        document.getElementById('demoInput').innerText = newValue;
+                    }
+                }
+
+                function decrement() {
+                    const currentValue = Number(document.getElementById('demoInput').innerText);
+                    const newValue = currentValue - 1;
+                    if (checkLimit(newValue)) {
+                        document.getElementById('demoInput').innerText = newValue;
+                    }
+                }
+
+                function checkLimit(value) {
+                    return (minQuantity <= value && value <= maxQuantity);
+                }
+            </script>
+</div>
+</body>
+</html>
