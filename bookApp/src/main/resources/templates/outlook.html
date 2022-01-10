@@ -9,16 +9,16 @@
 <ul>
     <li><img src="outlookBg/Images/logo.jpg" alt="logo" height="80cm" width="92cm"></li>
     <li><a  href="#home">Home</a></li>
-    <li><a href="#books_available">Available Books</a></li>
+    <li><a th:href="@{'UserBooksTable'}">Available Books</a></li>
     <li><a href="#contact">Contact</a></li>
     <div class="dropdown">
         <button class="dropbtn">Categories
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="TechZone.html">Tech Zone</a>
-            <a href="EZ.html">Entertainment Zone</a>
-            <a href="Autobiographies.html">AutoBiographies</a>
+            <a th:href="@{'TechZone'}">Tech Zone</a>
+            <a th:href="@{'EZ'}">Entertainment Zone</a>
+            <a th:href="@{'Autobiographies'}">AutoBiographies</a>
         </div>
     </div>
     </div>

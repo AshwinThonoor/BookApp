@@ -9,7 +9,7 @@
         z-index: 9;
     }
 </style>
-<h1><center>Books details</center></h1>
+<h1><center>Available Books</center></h1>
 <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <div class="old_ie_wrapper">
 <form >
@@ -32,7 +32,6 @@
         <th>Section</th>
         <th>Price</th>
         <th>Available Books</th>
-        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -45,15 +44,10 @@
         <td>[[${bookValues.section}]]</td>
         <td>[[${bookValues.price}]]</td>
         <td>[[${bookValues.availableBooks}]]</td>
-        <td>
-            <a class="btn btn-primary m-2" th:href="@{'/modifyBook/' + ${bookValues.bookCode}}">Modify</a>
-            <a class="btn btn-primary m-2" th:href="@{'/deleteBook/' + ${bookValues.bookCode}}">Delete</a>
-        </td>
     </tr>
     </th:block>
     </tbody>
 </table>
-    <center><button class="btn btn-primary m-2" th:href="@{'/addBooks'}">Add</button></center>
 </form>
 </div>
 </html>

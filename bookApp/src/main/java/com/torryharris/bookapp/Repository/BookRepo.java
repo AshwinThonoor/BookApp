@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BookRepo extends JpaRepository<Books,String> {
+public interface BookRepo extends JpaRepository<Books,Integer> {
     public List<Books> findAllByAuthorStartingWith(String author);
     public List<Books> findAllByBookNameIsStartingWith(String bookName);
 

@@ -15,25 +15,31 @@ import java.util.List;
 public class BookService {
     @Autowired
     BookRepo bookRepo;
+
+
     public List<Books> booksList(){
         return bookRepo.findAll();
     }
-    public String addBook(Books books,String value){
-        switch (value) {
-            case "Add":
-                bookRepo.save(books);
-                //System.out.println("Added successfully");
-                break;
-            case "Modify":
-                bookRepo.save(books);
-                //System.out.println("Modified successfully");
-                break;
-            case "Delete":
-                bookRepo.delete(books);
-                //System.out.println("Deleted successfully");
-                break;
+    public String addBook(Books books, Model model){
+        bookRepo.save(books);
+        List<Books>booksList=bookRepo.findAll();
+        model.addAttribute("ListBooks",booksList);
+        return "AdminTable";
+    }
+    public String modifyBook(Books books, Model model){
+        if(bookRepo.existsById(books.getBookCode())) {
+            bookRepo.save(books);
+            List<Books>booksList=bookRepo.findAll();
+            model.addAttribute("ListBooks",booksList);
+            return "AdminTable";
         }
-        return "detailsPage";
+        return "AdminTable";
+    }
+    public String deleteBook(Books books, Model model){
+        bookRepo.deleteById(books.getBookCode());
+        List<Books>booksList=bookRepo.findAll();
+        model.addAttribute("ListBooks",booksList);
+        return "AdminTable";
     }
 
     public String adminTableDetails(Model model){
@@ -49,5 +55,9 @@ public class BookService {
 
     public List<Books> findAllByBookNameIsStartingWith(String bookName){
         return bookRepo.findAllByBookNameIsStartingWith(bookName);
+    }
+
+    public Books findByBookCode(int bookCode) {
+        return bookRepo.findById(bookCode).get();
     }
 }
