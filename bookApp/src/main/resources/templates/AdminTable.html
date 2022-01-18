@@ -12,7 +12,7 @@
 <h1><center>Books details</center></h1>
 <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <div class="old_ie_wrapper">
-<form >
+<form>
     <div class="m-3">
     <label for="filter">Filter By:</label>
     <select name="filter" id="filter">
@@ -21,7 +21,7 @@
         <option value="bookName">BookName</option>
     </select>
     <input type="text" name="word" placeholder="Enter a word">
-    <input type="submit" th:href="@{'/filter'}">
+        <a  class="btn btn-primary m-2" th:href="@{'/filter'}" >Submit</a>
     </div>
 <table class="table table-bordered">
     <thead class="thead-dark">
@@ -53,7 +53,7 @@
     </th:block>
     </tbody>
 </table>
-    <center><button class="btn btn-primary m-2" th:href="@{'/addBooks'}">Add</button></center>
 </form>
+    <center><a class="btn btn-primary m-2" th:href="@{'/addBooks'}">Add</a></center>
 </div>
 </html>

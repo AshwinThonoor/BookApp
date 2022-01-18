@@ -17,7 +17,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Entity
 public class Books {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int bookCode;
     private String bookName;

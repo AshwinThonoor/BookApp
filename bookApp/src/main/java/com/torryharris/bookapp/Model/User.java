@@ -3,10 +3,7 @@ package com.torryharris.bookapp.Model;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,8 +13,11 @@ import javax.persistence.Id;
 @ToString
 public class User {
     @Id
+    private int userUniqueId;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sNo;
     private String userName;
     private String email,password;
+
 }

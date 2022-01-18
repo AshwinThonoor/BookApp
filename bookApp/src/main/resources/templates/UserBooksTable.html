@@ -32,9 +32,11 @@
         <th>Section</th>
         <th>Price</th>
         <th>Available Books</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
+
     <th:block th:each="bookValues : ${ListBooks}">
 
     <tr>
@@ -44,10 +46,15 @@
         <td>[[${bookValues.section}]]</td>
         <td>[[${bookValues.price}]]</td>
         <td>[[${bookValues.availableBooks}]]</td>
+        <td>
+            <a class="btn btn-primary m-2" th:href="@{'/buyNow/' + ${bookValues.bookCode}}">Buy Now</a>
+            <a class="btn btn-primary m-2" th:href="@{'/addToCart/' + ${bookValues.bookCode}}">Add To Cart</a>
+        </td>
     </tr>
     </th:block>
     </tbody>
 </table>
+    <center><a class="btn btn-primary m-2" th:href="@{'/cart'}">Proceed to cart</a></center>
 </form>
 </div>
 </html>

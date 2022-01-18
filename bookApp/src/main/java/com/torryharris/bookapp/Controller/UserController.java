@@ -1,5 +1,6 @@
 package com.torryharris.bookapp.Controller;
 
+import com.torryharris.bookapp.Model.Cart;
 import com.torryharris.bookapp.Model.User;
 import com.torryharris.bookapp.Repository.UserRepo;
 import com.torryharris.bookapp.Service.BookService;
@@ -20,17 +21,18 @@ public class UserController {
 
     @GetMapping("/loginPage")
     public String loginPage(){
-        return "LoginPage.html";
+        return "LoginPage";
     }
+
     @GetMapping("/registrationPage")
 
     public String registrationPage(){
-        return "RegistrationPage.html";
+        return "RegistrationPage";
     }
 
     @RequestMapping("/login")
-    public String login(Model model, User user, HttpServletRequest request){
-        return userService.userLogin(model,user,request);
+    public String login(Model model, User user, Cart cart, HttpServletRequest request){
+        return userService.userLogin(model,user,cart,request);
     }
 
     @RequestMapping("/register")

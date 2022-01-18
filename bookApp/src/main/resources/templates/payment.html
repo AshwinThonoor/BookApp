@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+
+<link rel= "stylesheet" href="style.css">
+</head>
+<body>
+    <img src="white.jpg" alt="Girl in a jacket" width="1300" height="650">
+
+<div class= "app-container">
+    <div class="top-box">
+    <p><span class="left-icon">&#x2196;</span>CHECKOUT<span class="right-icon">&#xb7;&#xb7;&#xb7;</span></p>
+    </div>
+
+    <div class="middle-box">
+        <p><b>Total amount to be paid is : </b></p>
+    </div>
+    <div class="bottom-box">
+        <button type="button" class= "payment-option-btn"><b>Pay with UPI Id</b></button>
+
+    <div class="upi-details">
+        <p>Enter UPI Id linked to Banks</p>
+        <label>Upi Id</label><br>
+        <input type="text" class="card-num-field" placeholder="id@bankname">
+        </div>
+         
+        <h2 class="or">OR</h2>
+    <button type="button" class= "payment-option-btn"><b>Pay using Card</b></button>
+    <div class="card-details">
+        <p>Pay using credit or debit card</p>
+        <div class="card-num-field-group">
+        <label>Card Number</label><br>
+        <input type="text" class="card-num-field" placeholder="xxxx-xxxx-xxxx-xxxx">
+        </div>
+    
+        <div class="date-field-group">
+        <label>Expiry Date</label><br>
+        <input type="text" class="date-field" placeholder="mm">
+        <input type="text" class="date-field" placeholder="yyyy">
+        </div>
+    
+        <div class="cvc-field-group">
+        <label>CVC</label><br>
+        <input type="password" class="cvc-field" placeholder="xxx">
+        </div>
+    
+        <div class="name-field-group">
+        <label>Card Holder Name</label><br>
+        <input type="text" class="name-field" placeholder="Full Name">
+        </div>
+    </div>
+
+       <button type="button" class="pay-btn" onclick="alert('Payment Successfull!! Click on Next')"><b><i>Pay Now</i></b></button>
+        <a th:href="@{'/confirmation'}"  class="btn"><b><i>Next</i></b></a>
+    </div>
+
+</div>
+</body>
+</html>

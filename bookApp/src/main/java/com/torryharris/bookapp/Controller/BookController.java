@@ -8,10 +8,7 @@ import com.torryharris.bookapp.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -23,11 +20,20 @@ public class BookController {
     BookService bookService;
 
     //CRUD operations
+    @GetMapping("/home")
+    public String home(Model model){
+        return "outlook";
+    }
+//    @GetMapping("/userBooksTable")
+//    public String userBooksTable(){
+//        return "UserBooksTable";
+//    }
 
     @GetMapping("/addBooks")
-    public String addBook(Books books, Model model) {
+    public String addBook() {
         return "AddBooks";
     }
+
     @PostMapping("/addBooksValues")
     public String addBooksValues(Books books, Model model) {
         return bookService.addBook(books,model);
@@ -64,19 +70,19 @@ public class BookController {
         return "UserBooksTable";
     }
 
-    @RequestMapping("/filter")
+    @GetMapping("/filter")
     public String filter(HttpServletRequest request, Model model ){
         switch (request.getParameter("filter")) {
                 case "author":
-                    List<Books>booksListByAuthor= bookService.findAllByAuthorStartingWith(request.getParameter("word"));
+                    List<Books>booksListByAuthor= bookService.findAllByAuthor(request.getParameter("word"));
                     model.addAttribute("booksListByAuthor",booksListByAuthor);
-                    return "AdminTable.html";
+                    return "AdminTable";
                 case "bookName":
                     List<Books>booksListByBookName=bookService.findAllByBookNameIsStartingWith(request.getParameter("word"));
                     model.addAttribute("booksListByBookName",booksListByBookName);
-                    return "AdminTable.html";
+                    return "AdminTable";
             }
-        return "AdminTable.html";
+        return "AdminTable";
     }
 
 }

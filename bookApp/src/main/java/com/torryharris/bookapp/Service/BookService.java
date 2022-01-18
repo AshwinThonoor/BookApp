@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
+
     @Autowired
     BookRepo bookRepo;
 
@@ -20,12 +22,14 @@ public class BookService {
     public List<Books> booksList(){
         return bookRepo.findAll();
     }
+
     public String addBook(Books books, Model model){
         bookRepo.save(books);
         List<Books>booksList=bookRepo.findAll();
         model.addAttribute("ListBooks",booksList);
         return "AdminTable";
     }
+
     public String modifyBook(Books books, Model model){
         if(bookRepo.existsById(books.getBookCode())) {
             bookRepo.save(books);
@@ -49,8 +53,8 @@ public class BookService {
 
     }
 
-    public List<Books> findAllByAuthorStartingWith(String author){
-        return bookRepo.findAllByAuthorStartingWith(author);
+    public List<Books> findAllByAuthor(String author){
+        return bookRepo.findAllByAuthor(author);
     }
 
     public List<Books> findAllByBookNameIsStartingWith(String bookName){
