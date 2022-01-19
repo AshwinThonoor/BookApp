@@ -69,6 +69,14 @@ public class BookController {
         model.addAttribute("ListBooks",booksList);
         return "UserBooksTable";
     }
+    @GetMapping("/ReloadUserBooksTable")
+    public String ReloadUserBooksTable(Model model){
+        List<Books>booksList=bookService.booksList();
+        System.out.println(model.getAttribute("total"));
+        model.addAttribute("total",model.getAttribute("total"));
+        model.addAttribute("ListBooks",booksList);
+        return "UserBooksTable";
+    }
 
     @GetMapping("/filter")
     public String filter(HttpServletRequest request, Model model ){

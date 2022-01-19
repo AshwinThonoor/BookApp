@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="Cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script th:inline="javascript">
+    var totalPrice=0;
+</script>
 </head>
 <body>
 <section>
@@ -53,7 +56,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#"class="nav-link">Order It Now</a>
+                        <a href="#" class="nav-link">Order It Now</a>
                     </li>
                 </ul>
             </div>
@@ -94,8 +97,20 @@
                             </div>
                         </td>
                         <td>
-                            <h6 th:id="'price'+${ListCart.bookCode}" >[[${ListCart.price}]] </h6>
+                            <h6>[[${ListCart.price}]] </h6>
                         </td>
+                        <td>
+                            <h6>[[${ListCart.totalNumberOfBooks}]] </h6>
+                        </td>
+                        <td>
+                            <h6 th:id="totalPrice+${ListCart.price}" th:text="${ListCart.totalNumberOfBooks}*${ListCart.price}"></h6>
+                        </td>
+                        <script th:inline="javascript">
+                            totalPrice+=Number(document.getElementById("totalPrice"+[[${ListCart.price}]]).innerText);
+                            console.log(totalPrice)
+                        </script>
+<!--                        <td id="subTotal"></td>-->
+
 <!--                        <td>-->
 <!--                            <label for="Quantity">Quantity</label>-->
 
@@ -107,50 +122,50 @@
 <!--                            </select>-->
 
 <!--                        </td>-->
-                        <td>
+<!--                        <td>-->
 
-                                <button  th:onclick="increment(${ListCart.bookCode}),totalPrice(${ListCart.bookCode})">+</button>
+<!--                                <button  th:onclick="increment(${ListCart.bookCode}),totalPrice(${ListCart.bookCode})">+</button>-->
 
-                            <span th:id="'demoInput'+${ListCart.bookCode}">0</span>
+<!--                            <span th:id="'demoInput'+${ListCart.bookCode}">0</span>-->
 
-                                <button th:onclick="decrement(${ListCart.bookCode}),totalPrice(${ListCart.bookCode})"> - </button>
+<!--                                <button th:onclick="decrement(${ListCart.bookCode}),totalPrice(${ListCart.bookCode})"> - </button>-->
 
-                        </td>
-                        <td>
-                            <h6 th:id="'totalPrice'+${ListCart.bookCode}"> </h6>
-                        </td>
-                    </tr>
-                        <script th:inline="javascript">
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <h6 th:id="'totalPrice'+${ListCart.bookCode}"> </h6>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                        <script th:inline="javascript">-->
 
-                          console.log([[${ListCart.bookCode}]]);
+<!--                          console.log([[${ListCart.bookCode}]]);-->
 
-                            function increment(v) {
-                                console.log(v);
-                                const currentValue = Number(document.getElementById('demoInput'+v).innerText);
-                                const newValue = currentValue + 1;
-                                if (checkLimit(newValue)) {
-                                    document.getElementById('demoInput'+v).innerText = newValue;
-                                }
-                            }
+<!--                            function increment(v) {-->
+<!--                                console.log(v);-->
+<!--                                const currentValue = Number(document.getElementById('demoInput'+v).innerText);-->
+<!--                                const newValue = currentValue + 1;-->
+<!--                                if (checkLimit(newValue)) {-->
+<!--                                    document.getElementById('demoInput'+v).innerText = newValue;-->
+<!--                                }-->
+<!--                            }-->
 
-                            function decrement(v) {
-                                const currentValue = Number(document.getElementById('demoInput'+v).innerText);
-                                const newValue = currentValue - 1;
-                                if (checkLimit(newValue)) {
-                                    document.getElementById('demoInput'+v).innerText = newValue;
+<!--                            function decrement(v) {-->
+<!--                                const currentValue = Number(document.getElementById('demoInput'+v).innerText);-->
+<!--                                const newValue = currentValue - 1;-->
+<!--                                if (checkLimit(newValue)) {-->
+<!--                                    document.getElementById('demoInput'+v).innerText = newValue;-->
 
-                                }
-                            }
+<!--                                }-->
+<!--                            }-->
 
-                            function checkLimit(value) {
-                                return (0 <= value && value <= 10);
-                            }
-                            function totalPrice(v){
-                                const numberOfBooks = Number(document.getElementById('demoInput'+v).innerText);
-                                const price = Number(document.getElementById('price'+v).innerText);
-                                document.getElementById('totalPrice'+v).innerText=numberOfBooks * price;
-                            }
-                        </script>
+<!--                            function checkLimit(value) {-->
+<!--                                return (0 <= value && value <= 10);-->
+<!--                            }-->
+<!--                            function totalPrice(v){-->
+<!--                                const numberOfBooks = Number(document.getElementById('demoInput'+v).innerText);-->
+<!--                                const price = Number(document.getElementById('price'+v).innerText);-->
+<!--                                document.getElementById('totalPrice'+v).innerText=numberOfBooks * price;-->
+<!--                            }-->
+<!--                        </script>-->
 
                     </th:block>
                     </tbody>
@@ -159,18 +174,27 @@
         </div>
     </div>
 </section>
+
 <div class="col-lg-4 offset-lg-4">
     <div class="checkout">
         <ul>
             <li class="subtotal">subtotal
-                <span> </span>
+                <span id="subTotal"> </span>
+                <h6 style="font-size: x-small" align="right">18% GST<br>-10% discount</h6>
             </li>
             <li class="cart-total">Total
-                <span> </span></li>
+                <span id="total"> </span></li>
         </ul>
         <a th:href="@{'/payment'}" class="proceed-btn">Proceed to Checkout</a>
     </div>
 </div>
+<script th:inline="javascript">
+    console.log("out side loop")
+    console.log(totalPrice)
+    document.getElementById("subTotal").innerText=totalPrice;
+    document.getElementById("total").innerText=((totalPrice*1.18)*0.9)
+
+</script>
 </body>
 
 </html>
