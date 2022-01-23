@@ -1,6 +1,6 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <title> Cart</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="Cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -192,7 +192,7 @@
     console.log("out side loop")
     console.log(totalPrice)
     document.getElementById("subTotal").innerText=totalPrice;
-    document.getElementById("total").innerText=((totalPrice*1.18)*0.9)
+    document.getElementById("total").innerText=(Math.round((totalPrice*1.18)*0.9))
 
 </script>
 </body>

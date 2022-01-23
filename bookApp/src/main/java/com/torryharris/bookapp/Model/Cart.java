@@ -13,6 +13,8 @@ import javax.persistence.*;
 public class Cart {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int sN0;
     private int bookCode;
     private String bookName;
     private String author;

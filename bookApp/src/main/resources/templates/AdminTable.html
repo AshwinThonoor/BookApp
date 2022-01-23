@@ -1,4 +1,6 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Admin Table</title>
 <style>
     .form-popup {
         display: none;
@@ -8,22 +10,31 @@
         border: 3px solid #f1f1f1;
         z-index: 9;
     }
+    body{
+        background-image: url("white.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 </style>
+</head>
+<body>
 <h1><center>Books details</center></h1>
 <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <div class="old_ie_wrapper">
-<form>
+<form action="/filterAdmin">
     <div class="m-3">
     <label for="filter">Filter By:</label>
     <select name="filter" id="filter">
         <option>Choose any one</option>
         <option value="author">Author</option>
         <option value="bookName">BookName</option>
+        <option value="section">section</option>
     </select>
     <input type="text" name="word" placeholder="Enter a word">
-        <a  class="btn btn-primary m-2" th:href="@{'/filter'}" >Submit</a>
+        <input type="submit" class="btn btn-primary m-2" value="Submit" >
     </div>
-<table class="table table-bordered">
+</form>
+<table class="table table-bordered table-striped table-hover">
     <thead class="thead-dark">
     <tr>
         <th>Book Code</th>
@@ -53,7 +64,7 @@
     </th:block>
     </tbody>
 </table>
-</form>
-    <center><a class="btn btn-primary m-2" th:href="@{'/addBooks'}">Add</a></center>
+    <center><a class="btn btn-primary m-2" th:href="@{'/addBooks'}">Add Books</a></center>
 </div>
+</body>
 </html>

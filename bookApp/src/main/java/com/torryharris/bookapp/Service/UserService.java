@@ -2,60 +2,13 @@ package com.torryharris.bookapp.Service;
 
 import com.torryharris.bookapp.Model.Cart;
 import com.torryharris.bookapp.Model.User;
-import com.torryharris.bookapp.Repository.CartRepository;
-import com.torryharris.bookapp.Repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
-@Service
-public class UserService {
-    @Autowired
-    UserRepo userRepo;
-    @Autowired
-    BookService bookService;
-    @Autowired
-    CartRepository cartRepository;
+public interface UserService {
+    public String userLogin(Model model, User user, Cart cart, HttpServletRequest request, RedirectAttributes redirectAttributes);
+    public String userAdd(User user);
 
-    public String username;
-    Random random=new Random();
-
-    public String userLogin(Model model,User user, Cart cart,HttpServletRequest request){
-        username=request.getParameter("username");
-        String password=request.getParameter("password");
-        User user1=userRepo.findAllByUserName(username);
-        System.out.println(user1+"login");
-        // System.out.println(user1.getUserName());
-        //System.out.println(username+password+user1.getUserName()+user1.getPassword());
-        if(username.equals("admin") && password.equals("admin")){
-
-            return bookService.adminTableDetails(model);
-        }
-        else if(username.equals(user1.getUserName()) && password.equals(user1.getPassword())){
-            System.out.println(user1.getUserName()+user1.getPassword());
-
-            model.addAttribute("username",username);
-            return "outlook.html";
-        }
-        else {
-
-            return "LoginPage.html";
-        }
     }
-    public String userAdd(User user){
-        int userUniqueId=random.nextInt(10000000);
-        System.out.println(userUniqueId);
-        System.out.println(user+"user details");
-        user.setUserUniqueId(userUniqueId);
-
-        userRepo.save(user);
-
-        return "LoginPage.html";
-    }
-}

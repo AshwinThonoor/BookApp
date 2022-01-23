@@ -27,11 +27,7 @@
         800 Rs/-
     </p>
 
-    <table  style="-padding:px;">
-        <thead>
-        <th colspan="10"></th>
-        </thead>
-
+    <table align="center">
         <tbody>
         <tr>
             <td colspan="8">
@@ -46,59 +42,9 @@
                 </button>
             </td>
         </tr>
-
-        <tr>
-            <td colspan="2">
-                <button
-                        onclick="increment()">
-                    +
-                </button>
-            </td>
-
-            <td colspan="4">
-                            <span
-                                    id="demoInput">
-                                0
-                            </span>
-            </td>
-
-            <td colspan="2">
-                <button
-                        onclick="decrement()">
-                    -
-                </button>
-            </td>
-
-            <td
-                    colspan="2">
-            </td>
-        </tr>
         </tbody>
     </table>
-    <script>
-                const minQuantity = 0;
-                const maxQuantity = 10;
-
-                function increment() {
-                    const currentValue = Number(document.getElementById('demoInput').innerText);
-                    const newValue = currentValue + 1;
-                    if (checkLimit(newValue)) {
-                        document.getElementById('demoInput').innerText = newValue;
-                    }
-                }
-
-                function decrement() {
-                    const currentValue = Number(document.getElementById('demoInput').innerText);
-                    const newValue = currentValue - 1;
-                    if (checkLimit(newValue)) {
-                        document.getElementById('demoInput').innerText = newValue;
-                    }
-                }
-
-                function checkLimit(value) {
-                    return (minQuantity <= value && value <= maxQuantity);
-                }
-            </script>
+    <center><a style="color: white" th:href="@{'/termsAndCondition'}">Terms And Condition</a></center>
 </div>
 </body>
 </html>

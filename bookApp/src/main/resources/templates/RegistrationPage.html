@@ -1,5 +1,6 @@
 <html>
 <head>
+    <title>Registration Page</title>
     <link rel="stylesheet" href="newregister.css">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
@@ -9,7 +10,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h1><center>Registration Form</center></h1>
             <hr />
-            <form action="/register" name="regForm" id="regForm">
+            <form action="/register" method="post" name="regForm" id="regForm">
                 <table>
                     <tr>
                         <div class="form-group">

@@ -8,8 +8,9 @@ import java.util.List;
 
 @Repository
 public interface BookRepo extends JpaRepository<Books,Integer> {
-    public List<Books> findAllByAuthor(String author);
+    public List<Books> findAllByAuthorIsStartingWith(String author);
     public List<Books> findAllByBookNameIsStartingWith(String bookName);
+    public List<Books> findAllBySectionIsStartingWith(String section);
 
 
 }
