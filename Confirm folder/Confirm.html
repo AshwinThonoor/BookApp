@@ -1,0 +1,36 @@
+<head>
+    <title> Confirmation Page</title>
+    <link rel="stylesheet"href="Confirm.css">
+</head>
+
+
+
+<div class="columns">
+    <div class="column main"><input name="form_key" type="hidden" value="PefvQbePmuX6e2ZN">
+        <div id="authenticationPopup" data-bind="scope:'authenticationPopup'">
+            <div class="success-extras">
+                <i class="far fa-check-circle"></i>
+                <p>Order Confirmed,Thank You!</p>
+                <p class="success-lrg">
+                    Sit back, relax or even better...go for a run! We'll take care of the rest.
+                </p>
+                <hr class="divider">
+            </div>
+        </div>
+        <div class="checkout-success">
+            <p>Your order # is: <span>000166954</span>.</p>
+            <p>We'll email your tracking info.</p>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <a class="action primary continue" href="#0">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+        <div id="registration" data-bind="scope:'registration'">
+            <br>
+            <div data-role="checkout-messages" class="messages" data-bind="visible: isVisible(), click: removeAll"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
