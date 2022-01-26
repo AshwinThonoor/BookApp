@@ -21,6 +21,7 @@ public class PropertyConstants {
     public static final String SHOPPINGTYPE="/shopping/{bookCode}";
     public static final String TERMSANDCONDITION="/termsAndCondition";
     public static final String PAYMENT="/payment";
+    public static final String RECEIPT="/receipt";
     public static final String CONFIRMATION="/confirmation";
 
     /**

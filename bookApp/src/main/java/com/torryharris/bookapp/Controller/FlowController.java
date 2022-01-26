@@ -54,6 +54,10 @@ public class FlowController {
         return "payment";
     }
 
+    @GetMapping(PropertyConstants.RECEIPT)
+    public String receipt(Model model){
+        return cartService.receipt(model);
+    }
     @GetMapping(PropertyConstants.CONFIRMATION)
     public String confirmation(){
         return "confirm";

@@ -76,6 +76,7 @@
                         <artifactId>lombok</artifactId>
                     </exclude>
                 </excludes>
+                <finalName>Book</finalName>
             </configuration>
         </plugin>
         <plugin>

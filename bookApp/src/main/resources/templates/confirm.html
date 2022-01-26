@@ -1,57 +1,42 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>Booking Confirmed</title>
+    <title> Confirmation Page</title>
+    <link rel="stylesheet" href="Confirm.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <style>
+        body{
+            background-image: url("background images/paper-creased-white-texture-wallpaper-preview.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
-<style>
-    td {
-        padding: 0;
-    }
- p {
-    padding: .3rem;
-    margin: 0;
-  }
 
-</style>
-<body style="background-color:pink; background-size:cover;">
-<table style="background-image: url('https://playwaze.com/Images/application/background-pattern-min.png'); background-size:cover; background-color:dimgrey; font-family: Nunito, Montserrat, monaco,Consolas,Lucida Console,monospace; padding: 5rem;">
-    <tr height="75px">
-        <td colspan="3" height="75"></td>
-    </tr>
-    <tr>
-        <td width="150"></td>
-        <td>
-            <table width="80%" class="content"
-                   style="text-align: center; border-radius: 20px 20px; border-spacing: 0px; background-color: white; padding-top: 5%; padding-right: 5%; padding-bottom: 10%; padding-left: 5%; font-size: 25px;">
-                <tr>
-                    <td style="color: white" colspan="3" width="200%"> -</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img height="80"
-                             src="https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png"
-                             alt="tick icon">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>Order confirmed and continue shopping</h1>
-                        <h1></h1>
+<body>
 
-                        <button type="submit" th:href="@{'/home'}"  class="btn">Home</button>
-
-                    </td>
-                </tr>
-                <tr>
-                    <p><font color="white">we would look forward you to shop more with us and enjoy the Books
-                    </font> </p> </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+<div class="columns">
+    <div class="column main"><input name="form_key" type="hidden" value="PefvQbePmuX6e2ZN">
+        <div id="authenticationPopup" data-bind="scope:'authenticationPopup'">
+            <div class="success-extras">
+                <i class="far fa-check-circle"></i>
+                <p>Order Confirmed,Thank You!</p>
+                <p class="success-lrg">
+                    Sit back, relax or even better...go for a run! We'll take care of the rest.
+                </p>
+                <hr class="divider">
+            </div>
+        </div>
+        <div class="checkout-success">
+            <p>Your order # is: <span>000166954</span>.</p>
+            <p>We'll email your tracking info.</p>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <a class="action primary continue" th:href="@{'/home'}">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
-
-

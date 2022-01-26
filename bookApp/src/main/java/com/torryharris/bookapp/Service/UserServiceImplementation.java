@@ -3,7 +3,7 @@ package com.torryharris.bookapp.Service;
 import com.torryharris.bookapp.Model.Cart;
 import com.torryharris.bookapp.Model.User;
 import com.torryharris.bookapp.Repository.CartRepository;
-import com.torryharris.bookapp.Repository.UserRepo;
+import com.torryharris.bookapp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.Random;
 @Service
 public class UserServiceImplementation implements UserService{
     @Autowired
-    UserRepo userRepo;
+    UserRepository userRepository;
     @Autowired
     BookServiceImplementation bookServiceImplementation;
     @Autowired
@@ -27,7 +27,7 @@ public class UserServiceImplementation implements UserService{
     public String userLogin(Model model, User user, Cart cart, HttpServletRequest request, RedirectAttributes redirectAttributes){
         username=request.getParameter("username");
         String password=request.getParameter("password");
-        User user1=userRepo.findAllByUserName(username);
+        User user1= userRepository.findAllByUserName(username);
         System.out.println(user1+"login");
         // System.out.println(user1.getUserName());
         //System.out.println(username+password+user1.getUserName()+user1.getPassword());
@@ -35,7 +35,7 @@ public class UserServiceImplementation implements UserService{
 
             return bookServiceImplementation.adminTableDetails(model);
         }
-        else if(userRepo.existsByUserName(username) && username.equals(user1.getUserName()) && password.equals(user1.getPassword())){
+        else if(userRepository.existsByUserName(username) && username.equals(user1.getUserName()) && password.equals(user1.getPassword())){
             System.out.println(user1.getUserName()+user1.getPassword());
 
             model.addAttribute("username",username);
@@ -53,7 +53,7 @@ public class UserServiceImplementation implements UserService{
         System.out.println(user+"user details");
         user.setUserUniqueId(userUniqueId);
 
-        userRepo.save(user);
+        userRepository.save(user);
 
         return "LoginPage.html";
     }

@@ -1,71 +1,67 @@
 package com.torryharris.bookapp.Service;
 
 import com.torryharris.bookapp.Model.Books;
-import com.torryharris.bookapp.Model.User;
-import com.torryharris.bookapp.Repository.BookRepo;
-import com.torryharris.bookapp.Repository.UserRepo;
+import com.torryharris.bookapp.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookServiceImplementation implements BookService {
 
     @Autowired
-    BookRepo bookRepo;
+    BookRepository bookRepository;
 
 
     public List<Books> booksList(){
-        return bookRepo.findAll();
+        return bookRepository.findAll();
     }
 
     public String addBook(Books books, Model model){
-        bookRepo.save(books);
-        List<Books>booksList=bookRepo.findAll();
+        bookRepository.save(books);
+        List<Books>booksList= bookRepository.findAll();
         model.addAttribute("ListBooks",booksList);
         return "AdminTable";
     }
 
     public String modifyBook(Books books, Model model){
-        if(bookRepo.existsById(books.getBookCode())) {
-            bookRepo.save(books);
-            List<Books>booksList=bookRepo.findAll();
+        if(bookRepository.existsById(books.getBookCode())) {
+            bookRepository.save(books);
+            List<Books>booksList= bookRepository.findAll();
             model.addAttribute("ListBooks",booksList);
             return "AdminTable";
         }
         return "AdminTable";
     }
     public String deleteBook(Books books, Model model){
-        bookRepo.deleteById(books.getBookCode());
-        List<Books>booksList=bookRepo.findAll();
+        bookRepository.deleteById(books.getBookCode());
+        List<Books>booksList= bookRepository.findAll();
         model.addAttribute("ListBooks",booksList);
         return "AdminTable";
     }
 
     public String adminTableDetails(Model model){
-        List<Books>booksList=bookRepo.findAll();
+        List<Books>booksList= bookRepository.findAll();
         model.addAttribute("ListBooks",booksList);
         return "AdminTable.html";
 
     }
 
     public List<Books> findAllByAuthorIsStartingWith(String author){
-        return bookRepo.findAllByAuthorIsStartingWith(author);
+        return bookRepository.findAllByAuthorIsStartingWith(author);
     }
 
     public List<Books> findAllByBookNameIsStartingWith(String bookName){
-        return bookRepo.findAllByBookNameIsStartingWith(bookName);
+        return bookRepository.findAllByBookNameIsStartingWith(bookName);
     }
 
     public List<Books> findAllBySectionIsStartingWith(String section){
-        return bookRepo.findAllBySectionIsStartingWith(section);
+        return bookRepository.findAllBySectionIsStartingWith(section);
     }
 
     public Books findByBookCode(int bookCode) {
-        return bookRepo.findById(bookCode).get();
+        return bookRepository.findById(bookCode).get();
     }
 }

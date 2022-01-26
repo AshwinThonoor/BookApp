@@ -4,8 +4,9 @@ import com.torryharris.bookapp.Controller.BookController;
 import com.torryharris.bookapp.Model.Books;
 import com.torryharris.bookapp.Model.Cart;
 import com.torryharris.bookapp.Model.User;
+import com.torryharris.bookapp.Repository.BookRepository;
 import com.torryharris.bookapp.Repository.CartRepository;
-import com.torryharris.bookapp.Repository.UserRepo;
+import com.torryharris.bookapp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -21,13 +22,15 @@ public class CartServiceImplementation implements CartService{
     @Autowired
     BookController bookController;
     @Autowired
-    UserRepo userRepo;
+    UserRepository userRepository;
     @Autowired
     UserServiceImplementation userService;
+    @Autowired
+    BookRepository bookRepository;
     static private int total=0;
 
     public List<Cart> cartList(){
-        return cartRepository.findAllByUser(userRepo.findAllByUserName(userService.username));
+        return cartRepository.findAllByUser(userRepository.findAllByUserName(userService.username));
     }
 
     public String addToCart(int bookCode, Model model, Cart cart,int quantity){
@@ -43,12 +46,19 @@ public class CartServiceImplementation implements CartService{
         total+=quantity*book.getPrice();
         System.out.println(total+"cart service");
 
-        User user= userRepo.findAllByUserName(userService.username);
+        User user= userRepository.findAllByUserName(userService.username);
         cart.setUser(user);
         cartRepository.save(cart);
         model.addAttribute("total",total);
 
         return bookController.ReloadUserBooksTable(model);
+    }
+
+    public String receipt(Model model){
+        List<Cart>cartList= cartRepository.findAllByUser(userRepository.findAllByUserName(userService.username));
+        model.addAttribute("ListCart",cartList);
+        model.addAttribute("total",total);
+        return "ReceiptPage";
     }
 //    public String emptyCart(){
 //        User user= userRepo.findAllByUserName(userService.username);
